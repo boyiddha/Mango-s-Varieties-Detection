@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>Fruit Recognition</title>
+  </head>
+  <body class="bg-gray-200">
+    <header class="text-gray-400 body-font -my-8">
+        <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+          <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-green-500 rounded-full" viewBox="0 0 24 24">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+            </svg>
+            <span class="ml-3 text-xl">Fruit Recognition</span>
+          </a>
+          <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+            <a href="/" class="mr-5 hover:text-gray-900">Home</a>
+            <a href="/about" class="mr-5 hover:text-gray-900">About us</a>
+            <a href="/prediction" class="mr-5 hover:text-gray-900" > <b id="blink" style="color:red">prediction</b> </a>
+            <a href="/contact" class="mr-5 hover:text-gray-900">Contact us</a>
+          </nav>
+        </div>
+      <style>
+                 h1{
+          text-align: center;
+          }
+
+          .form-style {
+          margin:10px auto;
+          width: 400px;
+          padding: 20px 12px 10px 20px;
+          font: 14px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+          }
+
+          .form-style td {
+          padding: 0;
+          display: block;
+          list-style: none;
+          margin: 10px 0 0 0;
+          }
+
+          .form-style label{
+          margin:0 0 3px 0;
+          padding:0px;
+          display:block;
+          font-weight: bold;
+          }
+
+          .form-style .required{
+          color:red;
+          }
+          .form-style input[type=submit], .form-style input[type=reset]{
+          background: #4eb5f1;
+          padding: 8px 15px 8px 15px;
+          border: none;
+          color: #fff;
+          }
+          .form-style input[type=submit]:hover, .form-style input[type=reset]:hover{
+          background: #4eb5f1;
+          box-shadow:none;
+          -moz-box-shadow:none;
+          -webkit-box-shadow:none;
+          }
+          .form-style .field-textarea{
+          height: 100px;
+          }
+          .form-style input[type=text],
+          .form-style input[type=email],
+          textarea{
+          box-sizing: border-box;
+          -webkit-box-sizing: border-box;
+          -moz-box-sizing: border-box;
+          border:1px solid #BEBEBE;
+          padding: 7px;
+          margin:0px;
+          -webkit-transition: all 0.30s ease-in-out;
+          -moz-transition: all 0.30s ease-in-out;
+          -ms-transition: all 0.30s ease-in-out;
+          -o-transition: all 0.30s ease-in-out;
+          outline: none;
+          }
+          .form-style .long{
+          width: 100%;
+          }
+          .form-style input[type=text]:focus,
+          .form-style input[type=email]:focus,
+          .form-style textarea:focus{
+          -moz-box-shadow: 0 0 8px #88D5E9;
+          -webkit-box-shadow: 0 0 8px #88D5E9;
+          box-shadow: 0 0 8px #88D5E9;
+          border: 1px solid #88D5E9;
+          }
+          .error{
+          color: #D8000C;
+          background-color: #FFBABA;
+          }
+       </style>
+
+
+      </header><hr>
+      <section class="text-gray-600 body-font relative -my-8">
+        <div class="container px-5 py-24 mx-auto">
+          <div class="flex flex-col text-center w-full mb-12">
+            <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Contact Us</h1>
+            <p class="lg:w-2/3 mx-auto leading-relaxed text-base">If you have any query you can contac us!</p>
+          </div>
+          <div class="lg:w-1/2 md:w-2/3 mx-auto">
+            <div class="flex flex-wrap -m-2">
+
+              <form method="post" >
+                 <table class="form-style">
+                    <tr>
+                       <td>
+                          <label>
+                             Your name <span class="required">*</span>
+                          </label>
+                       </td>
+                       <td>
+                          <input type="text" class="long" id="name" autocomplete="off" required />
+                       </td>
+                    </tr>
+                    <tr>
+                       <td>
+                          <label>
+                            Your email address <span class="required">*</span>
+                          </label>
+                       </td>
+                       <td>
+                          <input type="email"  class="long" id="email" autocomplete="off" required/>
+                       </td>
+                    </tr>
+                     <tr>
+                      <td>
+                          <label>
+                            Subject <span class="required">*</span>
+                          </label>
+                       </td>
+                       <td>
+                          <input type="text"  class="long" id="subject" autocomplete="off" required/>
+                       </td>
+                     </tr>
+                    <tr>
+                       <td>
+                          <label>
+                             Message <span class="required">*</span>
+                          </label>
+                       </td>
+                       <td>
+                          <textarea cols="55" rows="5" id="message"  autocomplete="off" required></textarea>
+                       </td>
+                    </tr>
+                    <tr>
+                       <td></td>
+                       <td >
+                           <input type="submit" value="Send" id="sbmt" style="background-color: green;color: white" />
+                          <input type="reset" value="Reset" style="background-color: red; color: white" />
+
+                       </td>
+                    </tr>
+                 </table>
+              </form>
+
+              <div class="p-2 w-full pt-8 mt-8 border-t border-gray-200 text-center">
+                <a class="text-indigo-500">boiddha.hstu.ece@gmail.com</a>
+                <p class="leading-normal my-5">Suihari.
+                  <br>Dinajpur,5200
+                </p>
+                <span class="inline-flex">
+                    <a href="https://www.linkedin.com/in/boyiddhanath-roy/" target="_blank">
+					<i class="fa fa-linkedin-square" style="font-size:48px;color:blue"></i>
+					</a>
+                 
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div style="left: 0;bottom: 2px;width: 100%; background-color: gray; color: white;text-align: center;">
+        <br>Copyright &copy; boyiddha 2022.<br> Developed by Boyiddhanath Roy.
+      </div>
+    <! -- Email Smtp protocol js file-->
+    <script src="https://smtpjs.com/v3/smtp.js">
+    </script>
+    <script>
+        var btn= document.getElementById('sbmt');
+        btn.addEventListener('click',function(e){
+            e.preventDefault();
+            var name= document.getElementById('name').value;
+            var email= document.getElementById('email').value;
+            var subject= document.getElementById('subject').value;
+            var message= document.getElementById('message').value;
+            var body= 'name: ' +name + '<br/> email: ' +email + '<br/> subject: ' + subject + '<br/> mesage: ' +message ;
+
+            Email.send({
+            Host : "smtp.gmail.com",
+            Username : "boyiddha.hstu.ece@gmail.com",
+            Password : "uyqhimnqikqpgarh",
+            To : 'boyiddha.hstu.ece@gmail.com',
+            From : email ,
+            Subject : subject,
+            Body : body
+            }).then(
+              message => alert(message)
+            );
+        })
+
+    </script>
+
+
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
+    -->
+      <!--  Blinking script-->
+    <script type="text/javascript">
+    var blink =
+          document.getElementById('blink');
+
+    setInterval(function () {
+          blink.style.opacity =
+          (blink.style.opacity == 0 ? 1 : 0);
+     }, 300);
+  </script>
+
+
+  </body>
+</html>
